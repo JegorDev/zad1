@@ -4,9 +4,6 @@ on:
     push:
       branches: [ master ]
 
-env:
-  GITREGISTRY: ghcr.io/JegorDev
-
 jobs:
   build-and-push:
     name: Build and push Docker image to Docker Hub
@@ -39,7 +36,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.GITREGISTRY }}/fibonaczji
+          images: JegorDev/fibonaczji
           tags: |
             type=ref,event=branch
       - name: Build and push Docker image
@@ -50,5 +47,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/kasze
-          cache-to: type=registry,ref=ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/kasze,mode=max
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/kasze
+          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/kasze,mode=max
