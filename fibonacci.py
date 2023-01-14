@@ -1,8 +1,8 @@
 def calculate_fibonacci(index, previous_calculations):
     print("Previous calculations")
     print(previous_calculations)
-    if index == 1 or index == 2:
-        return 1
+    # if index == 1 or index == 2:
+    #     return 1
 
     # bottom_up = [None] * (index + 1)
     previous_calculations[1] = 1
